@@ -84,3 +84,16 @@ async function main(){
             // contributors
             const contributorUserNamesArray = contributorUserNames.split(",");
             console.log(contributorUserNamesArray);
+
+
+            const resultContributor;
+            for (i=0; i<contributorUserNamesArray.length; i++){
+                const gitContributors = contributorUserNamesArray[i]
+                const gitResponse2 = await axios.get(`https://api.github.com/users/${gitContributors}`);
+                const ContriProfImage = gitResponse2.data.avatar_url;
+                const gitContribuUrl = gitResponse2.data.html_url;
+                const gitContribuEmail = gitResponse2.data.email;
+                const resultContributor = resultContributor + (`
+                \n <img src="${ContriProfImage}" alt="drawing" width="150" display="inline"/> ${gitContributors}  GitHubLink: ${gitContribuUrl}`);
+            }
+            const result = (`
