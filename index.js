@@ -60,13 +60,27 @@ async function main(){
         console.log(`starting`);
         //Begins userResponse declarations
         console.log(userResponse);
-        const gitUsername = userResponse.username;
-        const projectTittle = userResponse.projectName;
+        const username = userResponse.username;
+        const projectName = userResponse.projectName;
         const projectDescription = userResponse.ProjectDescription;
-        const installationProcess = userResponse.installProcess;
+        const installProcess = userResponse.installProcess;
         const instruction = userResponse.instruction;
-        const instructionExample = userResponse.Example;
-        const licenseName = userResponse.licenseUrl;
-        const licenseUrl = userResponse.licensenNamel;
-        const contributorUserNames = userResponse.contributors;
+        const Example = userResponse.Example;
+        const licenseUrl = userResponse.licenseUrl;
+        const licenseName = userResponse.licensenName;
+        const contributors = userResponse.contributors;
         const tests = userResponse.tests;
+
+          // retrieves GitHub data
+         
+            const gitResponse = await axios.get(`https://api.github.com/users/${gitUsername}`);
+            const gitData = gitResponse.data;
+            const gitName = gitData.login;
+            const gitEmail = gitData.email;
+            const gitlocation = gitData.location;
+            const gitUrl = gitData.html_url;
+            const gitProfileImage = gitData.avatar_url;
+                
+            // contributors
+            const contributorUserNamesArray = contributorUserNames.split(",");
+            console.log(contributorUserNamesArray);
