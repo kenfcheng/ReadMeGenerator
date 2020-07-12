@@ -57,3 +57,16 @@ async function main(){
             name: "tests"
         }
         ]);
+        console.log(`starting`);
+        //Begins userResponse declarations
+        console.log(userResponse);
+        const gitUsername = userResponse.username;
+        const projectTittle = userResponse.projectName;
+        const projectDescription = userResponse.ProjectDescription;
+        const installationProcess = userResponse.installProcess;
+        const instruction = userResponse.instruction;
+        const instructionExample = userResponse.Example;
+        const licenseName = userResponse.licenseUrl;
+        const licenseUrl = userResponse.licensenNamel;
+        const contributorUserNames = userResponse.contributors;
+        const tests = userResponse.tests;
