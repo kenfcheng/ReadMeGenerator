@@ -13,33 +13,28 @@ async function main(){
         },
         {
             type: "input",
-            message: "What is your Project Tittle?",
-            name: "projectTittle"
+            message: "What's the name of project?",
+            name: "ProjectName"
         },
         {
             type: "input",
-            message: "Provide detail description",
-            name: "projectDescription"
+            message: "Please give a description",
+            name: "ProjectDescription"
         },
         {
             type: "input",
-            message: "What are the steps required to install your project? Provide a step-by-step description of how to get the development environment running.",
-            name: "installationProcess"
+            message: "What steps did you take to install the project?",
+            name: "InstallProcess"
         },
         {
             type: "input",
-            message: "Provide instructions for use.",
+            message: "Please give user instruction.",
             name: "instruction"
         },
         {
             type: "input",
-            message: "Provide instructions examples for use.",
-            name: "instructionExample"
-        },
-        {
-            type: "input",
-            message: "provide License name ",
-            name: "licenseName"
+            message: "Please show example of use.",
+            name: "Example"
         },
         {
             type: "input",
@@ -48,12 +43,17 @@ async function main(){
         },
         {
             type: "input",
-            message: "please enter git hub user names of the contributor if any (If there are mulitple contributor, seperate names with comma and no space! )",
-            name: "contributorsGitUserName"
+            message: "provide License name ",
+            name: "licenseName"
         },
         {
             type: "input",
-            message: "Provide examples on how to run tests.",
+            message: "please enter Github usernames of the contributor if any (If there are mulitple contributors, separate with coma and no space. )",
+            name: "contributors"
+        },
+        {
+            type: "input",
+            message: "Test run with examples.",
             name: "tests"
         }
         ]);
