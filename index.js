@@ -53,7 +53,7 @@ async function main() {
     },
     {
       type: "input",
-      message: "Test run with examples.",
+      message: "Please run text example.",
       name: "tests",
     },
   ]);
@@ -89,13 +89,13 @@ async function main() {
 
   var resultContributor;
   for (i = 0; i < contributorUserNamesArray.length; i++) {
-    var gitContributors = contributorUserNamesArray[i];
+    const gitContributors = contributorUserNamesArray[i];
     const gitResponse2 = await axios.get(
       `https://api.github.com/users/${gitContributors}`
     );
-    var ContriProfImage = gitResponse2.data.avatar_url;
-    var gitContribuUrl = gitResponse2.data.html_url;
-    var gitContribuEmail = gitResponse2.data.email;
+    const ContriProfImage = gitResponse2.data.avatar_url;
+    const gitContribuUrl = gitResponse2.data.html_url;
+    const gitContribuEmail = gitResponse2.data.email;
     var resultContributor =
       resultContributor +
       `
@@ -121,8 +121,7 @@ ${instruction}
 ${instructionExample}
 \`\`\`
 ## License 
-This project is licensed under the ${licenseName} - see the ${licenseUrl} file for details
-## Contributors
+The license for this project ${licenseName} - details can be found at ${licenseUrl} 
 ${resultContributor}
 ## Tests
 ${tests}
@@ -133,7 +132,7 @@ ${tests}
 \nLocation:${gitlocation}
 \nGitHub: ${gitUrl}
 `;
-  const writeResult = fs.writeFileSync(
+  var writeResult = fs.writeFileSync(
     path.join(__dirname, "../GoodReadMeGenerator", "readMe.md"),
     result
   );
