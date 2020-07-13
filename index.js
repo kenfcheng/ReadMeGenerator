@@ -95,5 +95,40 @@ async function main(){
                 const gitContribuEmail = gitResponse2.data.email;
                 const resultContributor = resultContributor + (`
                 \n <img src="${ContriProfImage}" alt="drawing" width="150" display="inline"/> ${gitContributors}  GitHubLink: ${gitContribuUrl}`);
-            }
-            const result = (`
+            };
+    
+            // Creates New Lines for Sections in ReadMe
+            let result = (`
+        # ${projectName} 
+${projectDescription}
+\n* [Installation](#Installation)
+\n* [Instructions](#Instructions)
+\n* [License](#License)
+\n* [Contributors](#Contributors)
+\n* [Author](#Author)
+\n* [Tests](#Tests)
+
+## Installation
+${installationProcess}
+## Instructions
+${instruction}
+\`\`\`
+${instructionExample}
+\`\`\`
+## License 
+This project is licensed under the ${licenseName} - see the ${licenseUrl} file for details
+## Contributors
+${resultContributor}
+## Tests
+${tests}
+## Author 
+\n![ProfileImage](${gitProfileImage})
+\n**${gitName}**
+\nEmail: ${gitEmail}
+\nLocation:${gitlocation}
+\nGitHub: ${gitUrl}
+`)
+const writeResult = fs.writeFileSync(path.join(__dirname, '../GoodReadMeGenerator', 'readMe.md'), result )
+console.log("file generated....")
+    }
+main();
