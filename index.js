@@ -94,6 +94,12 @@ async function main() {
     const gitResponse2 = await axios.get(
       `https://api.github.com/users/${gitContributors}`
     );
+    // Try/Catch 404 Error
+    try {
+      someFunction(gitResponse2);
+    } catch (error) {
+      console.log(error);
+    }
     const ContriProfImage = gitResponse2.data.avatar_url;
     const gitContribuUrl = gitResponse2.data.html_url;
     const gitContribuEmail = gitResponse2.data.email;
@@ -140,11 +146,3 @@ ${tests}
   console.log("file generated....");
 }
 main();
-
-setTimeout(function (userResponse) {
-  try {
-    noSuchVariable;
-  } catch {
-    alert("error");
-  }
-}, 1000);
