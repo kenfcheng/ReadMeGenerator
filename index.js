@@ -140,3 +140,11 @@ ${tests}
   console.log("file generated....");
 }
 main();
+
+setTimeout(function (userResponse) {
+  try {
+    noSuchVariable;
+  } catch {
+    alert("error");
+  }
+}, 1000);
