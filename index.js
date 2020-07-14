@@ -4,7 +4,7 @@ const fs = require("fs");
 const path = require("path");
 async function main() {
   console.log(`starting`);
-  const userResponse = await inquirer.prompt([
+  var userResponse = await inquirer.prompt([
     {
       type: "input",
       message: "What is your GitHub user name?",
@@ -53,7 +53,7 @@ async function main() {
     },
     {
       type: "input",
-      message: "Please run text example.",
+      message: "Please run test example.",
       name: "tests",
     },
   ]);
@@ -74,7 +74,7 @@ async function main() {
   // retrieves GitHub data
 
   const gitResponse = await axios.get(
-    `https://api.github.com/users/${gitUsername}`
+    `https://api.github.com/users/${username}`
   );
   const gitData = gitResponse.data;
   const gitName = gitData.login;
@@ -84,15 +84,15 @@ async function main() {
   const gitProfileImage = gitData.avatar_url;
 
   // contributors
-  const contributorUserNamesArray = contributorUserNames.split(",");
+  const contributorUserNamesArray = contributors.split(",");
   console.log(contributorUserNamesArray);
 
   var resultContributor;
   for (i = 0; i < contributorUserNamesArray.length; i++) {
     const gitContributors = contributorUserNamesArray[i];
-    const gitResponse2 = await axios.get(
-      `https://api.github.com/users/${gitContributors}`
-    );
+    if (!gitContributors) continue;
+    const gitResponse2 = await axios.get`https://api.github.com/users/${gitContributors}`;
+
     const ContriProfImage = gitResponse2.data.avatar_url;
     const gitContribuUrl = gitResponse2.data.html_url;
     const gitContribuEmail = gitResponse2.data.email;
