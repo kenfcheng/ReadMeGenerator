@@ -73,9 +73,9 @@ async function main() {
 
   // retrieves GitHub data
 
-  const gitResponse = await axios.get(
-    `https://api.github.com/users/${username}`
-  );
+  const gitResponse = await axios
+    .get(`https://api.github.com/users/${username}`)
+    .catch((err) => console.log(err));
   const gitData = gitResponse.data;
   const gitName = gitData.login;
   const gitEmail = gitData.email;
@@ -91,8 +91,9 @@ async function main() {
   for (i = 0; i < contributorUserNamesArray.length; i++) {
     const gitContributors = contributorUserNamesArray[i];
     if (!gitContributors) continue;
-    const gitResponse2 = await axios.get`https://api.github.com/users/${gitContributors}`;
-
+    const gitResponse2 = await axios.get(
+      `https://api.github.com/users/${gitContributors}`
+    );
     const ContriProfImage = gitResponse2.data.avatar_url;
     const gitContribuUrl = gitResponse2.data.html_url;
     const gitContribuEmail = gitResponse2.data.email;
