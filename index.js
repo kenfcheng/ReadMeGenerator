@@ -53,7 +53,7 @@ async function main() {
     },
     {
       type: "input",
-      message: "Please run test example.",
+      message: "Press 'ENTER' to run generate ReadMe.",
       name: "tests",
     },
   ]);
@@ -91,15 +91,20 @@ async function main() {
   for (i = 0; i < contributorUserNamesArray.length; i++) {
     const gitContributors = contributorUserNamesArray[i];
     if (!gitContributors) continue;
+
     const gitResponse2 = await axios.get(
       `https://api.github.com/users/${gitContributors}`
     );
+    console.log("RESPONSE", gitResponse2);
     // Try/Catch 404 Error
     try {
-      someFunction(gitResponse2);
+      gitResponse2;
     } catch (error) {
-      console.log(error);
+      console.log(
+        "Could Not Find Contributor. Make Sure Name is Entered Correctly."
+      );
     }
+
     const ContriProfImage = gitResponse2.data.avatar_url;
     const gitContribuUrl = gitResponse2.data.html_url;
     const gitContribuEmail = gitResponse2.data.email;
@@ -121,11 +126,11 @@ ${projectDescription}
 \n* [Tests](#Tests)
 
 ## Installation
-${installationProcess}
+${installProcess}
 ## Instructions
 ${instruction}
 \`\`\`
-${instructionExample}
+${Example}
 \`\`\`
 ## License 
 The license for this project ${licenseName} - details can be found at ${licenseUrl} 
@@ -140,7 +145,7 @@ ${tests}
 \nGitHub: ${gitUrl}
 `;
   var writeResult = fs.writeFileSync(
-    path.join(__dirname, "../GoodReadMeGenerator", "readMe.md"),
+    path.join(__dirname, "../ReadMeGenerator", "ReadMe.md"),
     result
   );
   console.log("file generated....");
